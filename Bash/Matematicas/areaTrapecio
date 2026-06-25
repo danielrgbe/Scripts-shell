@@ -1,0 +1,22 @@
+#!/bin/bash
+# Calcula el area de un trapecio
+# Recibe 3 argumentos 
+# base menor
+# base mayor
+# altura
+
+baseMenor=$1
+baseMayor=$2
+altura=$3
+
+area=$((($baseMenor+$baseMayor)*$altura))
+
+if [ $(($area % 2)) -eq 0 ]
+    then
+    decimal=".0"
+    else
+	decimal=".5"
+    fi
+
+area=$(($area/2))
+echo $area$decimal
