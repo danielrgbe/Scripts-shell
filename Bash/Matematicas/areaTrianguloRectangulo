@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#Dados los lados de un triángulo rectangulo regresa el area para valores enteros
+
+b=$1
+h=$2
+
+area=$(($b*$h))
+
+if [ $(($area % 2)) -eq 0 ]
+    then
+    decimal=".0"
+    else
+	decimal=".5"
+    fi
+
+area=$(($area / 2))
+
+echo "A=($b*$h)/2=$area$decimal"
+
