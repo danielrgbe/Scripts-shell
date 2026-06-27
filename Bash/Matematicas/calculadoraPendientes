@@ -1,0 +1,87 @@
+#!/bin/bash
+# Una especie de calculadora que sirve para calcular las pendietes de funciones lineales, muestra un menu donde elegir opciones de la calculadora.
+tipo=0
+modo=0
+xCero=0
+yCero=0
+if [ $# -ge 1 ] 
+then
+    modo=$1
+fi
+if [ $# -ge 2 ]
+then
+    tipo=$2
+fi
+function getPunto(){
+    var=$1
+    num=$2
+    printf "Introduce %s%s: " $var $num
+    if [ $var == 'x' ]
+    then
+	if [ $num -eq 0 ]
+	then
+	    read xCero
+	else
+	    read x
+	fi
+    else
+	if [ $num -eq 0 ]
+	then
+	    read yCero
+	else
+	    read y
+	fi
+    fi
+}
+
+function getPuntos(){
+    inicio=$1
+    for ((i=$inicio; i<2;i++))
+    do
+	getPunto 'x' $i
+	getPunto 'y' $i
+    done
+}
+
+function getTipo(){
+    echo "Tipo de division"
+    echo "a) Entera"
+    echo "b) Decimal"
+    echo -n "Introduzca su elección: "
+    read eleccion
+}
+
+getPuntos $modo
+if [ $tipo -ne 1 ]
+then 
+    getTipo
+    if [ $eleccion == 'a' ]
+    then
+	tipo=0
+    else
+	tipo=1
+    fi
+fi
+#echo "$xCero"
+#ech	 "$yCero"
+#echo "$x"
+#echo "$y"
+#echo "$tipo"
+echo $(pendienteLinealV2 $xCero $yCero $x $y $tipo)
+
+
+
+#x=$1
+#y=$2
+#
+##if [ $(($pendiente % 2)) -eq 0 ]
+##    then
+##    decimal=".0"
+##    else
+##	decimal=".5"
+##    fi
+##
+#m=$(($y/$x))
+#
+#mod=$(($y%$x))
+#echo "m=$m, mod=$mod"
