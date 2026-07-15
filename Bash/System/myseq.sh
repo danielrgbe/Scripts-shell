@@ -1,5 +1,6 @@
 #!/bin/bash
 # Este script es una implementación del la shell function range
+
 inicioExc=0
 paso=1
 random=false
